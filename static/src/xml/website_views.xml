@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <div t-name="create_task_from_portal.portal_create_task">
+        <button id="button_create_new_task" type="button" class="btn btn-lg btn-primary" data-model_name="project.task">
+            <!--                data-toggle="modal" -->
+            <!--                data-force_action=""-->
+            <!--                data-success_page="" data-target=".o_create_task"-->
+
+            Create task
+        </button>
+    </div>
+
+    <div t-name="create_task_from_portal.portal_create_task_form">
+        <section class="container readable o_website_form_builder">
+            <form accept-charset="UTF-8" action="/website_form/" class="s_website_form col-md-12 mt32"
+                  data-model_name="project.task" data-force_action="" data-success_page=""
+                  enctype="multipart/form-data" method="post">
+                <div class="o_website_form_fields">
+                    <div class="o_not_editable hidden o_default_snippet_text">
+                        This placeholder prevents its parent from
+                        disappearing when emptied
+                    </div>
+                    <div class="form-group form-field o_required form-field-char"
+                         data-model-field="true" data-optional="false">
+                        <label class="control-label" for="name">
+                            <span>
+                                Titel taak
+                            </span>
+                        </label>
+                        <input class="form-control o_website_form_input" type="text" name="name"
+                               required="required"/>
+                    </div>
+                    <div>
+                        <p><t t-esc="projects"/></p>
+                    </div>
+                    <!--                    <t t-if="project">-->
+                    <!--                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"-->
+                    <!--                             data-model-field="true" data-optional="false">-->
+                    <!--                            <label class="control-label" for="project_id">-->
+                    <!--                                <span>-->
+                    <!--                                    Project-->
+                    <!--                                </span>-->
+                    <!--                            </label>-->
+                    <!--                            <select class="form-control o_website_form_input" name="project_id"-->
+                    <!--                                    t-foreach="project" t-as="project">-->
+                    <!--                                <option t-att-value="project.id">-->
+                    <!--                                    <t t-esc="project.name"/>-->
+                    <!--                                </option>-->
+                    <!--                            </select>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"-->
+                    <!--                             data-model-field="true" data-optional="false">-->
+                    <!--                            <label class="control-label" for="user_id">-->
+                    <!--                                <span>-->
+                    <!--                                    Toegewezen aan-->
+                    <!--                                </span>-->
+                    <!--                            </label>-->
+                    <!--                            <select class="form-control o_website_form_input" name="user_id"-->
+                    <!--                                    t-foreach="project" t-as="project">-->
+                    <!--                                <option t-att-value="project.user_id.id">-->
+                    <!--                                    <t t-esc="project.user_id.name"/>-->
+                    <!--                                </option>-->
+                    <!--                            </select>-->
+                    <!--                        </div>-->
+                    <!--                    </t>-->
+                    <!--                    <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"-->
+                    <!--                         data-model-field="true" data-optional="false">-->
+                    <!--                        <label class="control-label" for="stage_id">-->
+                    <!--                            <span>-->
+                    <!--                                Fase-->
+                    <!--                            </span>-->
+                    <!--                        </label>-->
+                    <!--                        <select class="form-control o_website_form_input" name="stage_id"-->
+                    <!--                                t-foreach="project" t-as="project">-->
+                    <!--                            &lt;!&ndash; TODO: option value based on text Nieuw &ndash;&gt;-->
+                    <!--                            <option value="10" selected="selected">-->
+                    <!--                                Nieuw-->
+                    <!--                            </option>-->
+                    <!--                        </select>-->
+                    <!--                    </div>-->
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button"
+                                class="btn btn-primary o_website_form_send o_default_snippet_text">
+                            Verzenden
+                        </button>
+                        <span id="o_website_form_result"/>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</odoo>

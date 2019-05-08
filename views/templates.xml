@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- TODO: automation blacklisted fiels in template -->
 <odoo>
+    <template id="assets_frontend" name="create_task_from_portal assets" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/create_task_from_portal/static/src/js/website_form.js"></script>
+        </xpath>
+    </template>
     <template id="portal_create_task" inherit_id="project.portal_my_project">
-        <xpath expr="//t/div/div[@class='panel-body']/div/div[2]/div" position="after">
+        <xpath expr="//t/div/div[@class='panel-body']/div/div[2]/div[@class='pull-right']/a" position="before">
             <button type="button" data-toggle="modal" data-model_name="project.task" data-force_action=""
-                    data-success_page="" data-target=".o_create_task" class="btn btn-sm btn-primary">
+                    data-success_page="" data-target=".o_create_task" class="btn btn-lg btn-primary">
                 Create task
             </button>
             <div class="modal fade o_create_task" role="dialog">
@@ -50,20 +55,20 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
-                                             data-model-field="true" data-optional="false">
-                                            <label class="control-label" for="user_id">
-                                                <span>
-                                                    Toegewezen aan
-                                                </span>
-                                            </label>
-                                            <select class="form-control o_website_form_input" name="user_id"
-                                                    t-foreach="project" t-as="project">
-                                                <option t-att-value="project.user_id.id">
-                                                    <t t-esc="project.user_id.name"/>
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <!--                                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"-->
+                                        <!--                                             data-model-field="true" data-optional="false">-->
+                                        <!--                                            <label class="control-label" for="user_id">-->
+                                        <!--                                                <span>-->
+                                        <!--                                                    Toegewezen aan-->
+                                        <!--                                                </span>-->
+                                        <!--                                            </label>-->
+                                        <!--                                            <select class="form-control o_website_form_input" name="user_id"-->
+                                        <!--                                                    t-foreach="project" t-as="project">-->
+                                        <!--                                                <option t-att-value="project.user_id.id">-->
+                                        <!--                                                    <t t-esc="project.user_id.name"/>-->
+                                        <!--                                                </option>-->
+                                        <!--                                            </select>-->
+                                        <!--                                        </div>-->
                                     </t>
                                     <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
                                          data-model-field="true" data-optional="false">
@@ -80,10 +85,31 @@
                                             </option>
                                         </select>
                                     </div>
+                                    <div class="form-group form-field  form-field-date" data-model-field="true"
+                                         data-optional="true">
+                                        <label class="control-label" for="date_deadline">
+                                            <span>Deadline</span>
+                                        </label>
+                                        <input class="form-control o_website_form_input o_website_form_date" type="text"
+                                               name="date_deadline"/>
+                                    </div>
+                                    <div class="form-group form-field  form-field-text" data-model-field="false"
+                                         data-optional="true">
+                                        <label class="control-label" for="Omschrijving">
+                                            <span>
+                                                Omschrijving
+                                            </span>
+                                        </label>
+                                        <textarea class="form-control o_website_form_input" type="text"
+                                                  name="Omschrijving"/>
+                                        <p class="help-block">
+                                            Geef een gedetailleerde omschrijving van de opdracht.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
-                                        <button type="button"
+                                        <button type="button" id="custom_form_button"
                                                 class="btn btn-primary o_website_form_send o_default_snippet_text">
                                             Verzenden
                                         </button>
