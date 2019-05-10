@@ -69,22 +69,23 @@
                                         <!--                                                </option>-->
                                         <!--                                            </select>-->
                                         <!--                                        </div>-->
+                                        <div class="form-group form-field  form-field-many2one"
+                                             data-model-field="true" data-optional="false">
+                                            <label class="control-label" for="stage_id">
+                                                <span>
+                                                    Fase
+                                                </span>
+                                            </label>
+                                            <select class="form-control o_website_form_input" name="stage_id"
+                                                    t-foreach="types" t-as="types">
+                                                <!-- TODO: option value based on text Nieuw -->
+                                                <option t-att-value="types.id" t-att-selected="types.name == 'new'">
+                                                    <t t-esc="types.name"/>
+<!--                                                    Nieuw-->
+                                                </option>
+                                            </select>
+                                        </div>
                                     </t>
-                                    <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
-                                         data-model-field="true" data-optional="false">
-                                        <label class="control-label" for="stage_id">
-                                            <span>
-                                                Fase
-                                            </span>
-                                        </label>
-                                        <select class="form-control o_website_form_input" name="stage_id"
-                                                t-foreach="project" t-as="project">
-                                            <!-- TODO: option value based on text Nieuw -->
-                                            <option value="10" selected="selected">
-                                                Nieuw
-                                            </option>
-                                        </select>
-                                    </div>
                                     <div class="form-group form-field  form-field-date" data-model-field="true"
                                          data-optional="true">
                                         <label class="control-label" for="date_deadline">
