@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- TODO: automation blacklisted fiels in template -->
 <odoo>
     <template id="assets_frontend" name="create_task_from_portal assets" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
@@ -43,14 +42,14 @@
                                     </div>
                                     <div class="form-group form-field o_required form-field-text"
                                          data-model-field="false" data-optional="false">
-                                        <label class="control-label" for="description">
+                                        <label class="control-label" for="Description">
                                             <span>
                                                 Description
                                             </span>
                                         </label>
                                         <textarea class="form-control o_website_form_input"
                                                   style="resize: vertical; height: 300px"
-                                                  type="text" name="description" required="required"/>
+                                                  type="text" name="Description" required="required"/>
                                     </div>
                                     <div class="form-group form-field o_required form-field-date"
                                          data-model-field="true" data-optional="false">
@@ -70,12 +69,8 @@
                                                 File Upload
                                             </span>
                                         </label>
-                                        <input type="file" class="o_website_form_input"
+                                        <input type="file" class="o_website_form_input" multiple="true"
                                                name="added_file"/>
-                                        <p class="help-block">
-                                            Only one file can be added. You can send more files after the task is
-                                            created.
-                                        </p>
                                     </div>
                                     <t t-if="project">
                                         <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"

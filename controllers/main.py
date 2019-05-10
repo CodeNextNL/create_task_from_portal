@@ -9,7 +9,7 @@ from odoo.exceptions import ValidationError
 
 
 class WebsiteForm(WebsiteForm):
-    _custom_label = "%s\n___________\n\n" % _("Custom infos extension!")  # Title for custom fields
+    _custom_label = ""
 
     def extract_data(self, model, values):
         data = {
