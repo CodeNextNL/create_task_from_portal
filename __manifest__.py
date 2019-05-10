@@ -1,4 +1,5 @@
-# Copyright (C) codeNext
+# Copyright (C) codeNext module named 'parts'
+
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Portal create task as customer',

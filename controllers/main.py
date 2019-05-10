@@ -2,7 +2,7 @@
 
 import base64
 
-from parts.odoo.addons.website_form.controllers.main import WebsiteForm
+from odoo.addons.website_form.controllers.main import WebsiteForm
 from odoo.http import request
 from odoo.tools.translate import _
 from odoo.exceptions import ValidationError
