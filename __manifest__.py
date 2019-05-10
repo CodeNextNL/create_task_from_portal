@@ -13,6 +13,7 @@
     ],
     'data': [
         'views/templates.xml',
+        'views/assets.xml'
     ],
     'installable': True,
     'post_init_hook': 'post_init_hook',

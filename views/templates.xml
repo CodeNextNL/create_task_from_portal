@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="assets_frontend" name="create_task_from_portal assets" inherit_id="web.assets_frontend">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" href="/create_task_from_portal/static/src/css/create_task_from_portal.css"/>
-            <script type="text/javascript" src="/create_task_from_portal/static/src/js/website_form.js"></script>
-        </xpath>
-    </template>
     <template id="portal_create_task" inherit_id="project.portal_my_project">
         <xpath expr="//t/div/div[@class='panel-body']/div/div[2]/div[@class='pull-right']/a" position="before">
             <button type="button" data-toggle="modal" data-model_name="project.task" data-force_action=""
