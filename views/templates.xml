@@ -3,6 +3,7 @@
 <odoo>
     <template id="assets_frontend" name="create_task_from_portal assets" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/create_task_from_portal/static/src/css/you_module_name.css"/>
             <script type="text/javascript" src="/create_task_from_portal/static/src/js/website_form.js"></script>
         </xpath>
     </template>
@@ -19,7 +20,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="fa fa-times" aria-hidden="true"></span>
                             </button>
-                            <h4 class="modal-title">Create Task</h4>
+                            <h4 class="modal-title">Create task</h4>
                         </div>
                         <section class="container readable o_website_form_builder">
                             <form accept-charset="UTF-8" action="/website_form/" class="s_website_form col-md-12 mt32"
@@ -34,11 +35,47 @@
                                          data-model-field="true" data-optional="false">
                                         <label class="control-label" for="name">
                                             <span>
-                                                Titel taak
+                                                Title
                                             </span>
                                         </label>
                                         <input class="form-control o_website_form_input" type="text" name="name"
-                                               required="required"/>
+                                               required="required" autofocus=""/>
+                                    </div>
+                                    <div class="form-group form-field o_required form-field-text"
+                                         data-model-field="false" data-optional="false">
+                                        <label class="control-label" for="description">
+                                            <span>
+                                                Description
+                                            </span>
+                                        </label>
+                                        <textarea class="form-control o_website_form_input"
+                                                  style="resize: vertical; height: 300px"
+                                                  type="text" name="description" required="required"/>
+                                    </div>
+                                    <div class="form-group form-field o_required form-field-date"
+                                         data-model-field="true" data-optional="false">
+                                        <label class="control-label" for="date_deadline">
+                                            <span>Deadline</span>
+                                        </label>
+                                        <input class="form-control o_website_form_input o_website_form_date" type="text"
+                                               name="date_deadline" required="required"/>
+                                        <p class="help-block">
+                                            Please provide the desired deadline.
+                                        </p>
+                                    </div>
+                                    <div class="form-group form-field form-field-binary" data-model-field="false"
+                                         data-optional="true">
+                                        <label class="control-label" for="added_file">
+                                            <span>
+                                                File Upload
+                                            </span>
+                                        </label>
+                                        <input type="file" class="o_website_form_input"
+                                               name="added_file"/>
+                                        <p class="help-block">
+                                            Only one file can be added. You can send more files after the task is
+                                            created.
+                                        </p>
                                     </div>
                                     <t t-if="project">
                                         <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
@@ -55,64 +92,44 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <!--                                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"-->
-                                        <!--                                             data-model-field="true" data-optional="false">-->
-                                        <!--                                            <label class="control-label" for="user_id">-->
-                                        <!--                                                <span>-->
-                                        <!--                                                    Toegewezen aan-->
-                                        <!--                                                </span>-->
-                                        <!--                                            </label>-->
-                                        <!--                                            <select class="form-control o_website_form_input" name="user_id"-->
-                                        <!--                                                    t-foreach="project" t-as="project">-->
-                                        <!--                                                <option t-att-value="project.user_id.id">-->
-                                        <!--                                                    <t t-esc="project.user_id.name"/>-->
-                                        <!--                                                </option>-->
-                                        <!--                                            </select>-->
-                                        <!--                                        </div>-->
-                                        <div class="form-group form-field  form-field-many2one"
+                                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
+                                             data-model-field="true" data-optional="false">
+                                            <label class="control-label" for="user_id">
+                                                <span>
+                                                    Assigned to
+                                                </span>
+                                            </label>
+                                            <select class="form-control o_website_form_input" name="user_id"
+                                                    t-foreach="project" t-as="project">
+                                                <!-- TODO: include name within option -->
+                                                <option t-att-value="project.user_id.id"></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-field  form-field-many2one css_non_editable_mode_hidden"
                                              data-model-field="true" data-optional="false">
                                             <label class="control-label" for="stage_id">
                                                 <span>
-                                                    Fase
+                                                    Stage
                                                 </span>
                                             </label>
-                                            <select class="form-control o_website_form_input" name="stage_id"
-                                                    t-foreach="types" t-as="types">
-                                                <!-- TODO: option value based on text Nieuw -->
-                                                <option t-att-value="types.id" t-att-selected="types.name == 'new'">
-                                                    <t t-esc="types.name"/>
-<!--                                                    Nieuw-->
-                                                </option>
-                                            </select>
+                                            <!-- TODO: find a better way to filter on stage_id New -->
+                                            <t t-foreach="project.type_ids" t-as="type">
+                                                <t t-if="type.name == 'Nieuw'">
+                                                    <select class="form-control o_website_form_input" name="stage_id">
+                                                        <option t-att-value="type.id">
+                                                            <t t-esc="type.name"/>
+                                                        </option>
+                                                    </select>
+                                                </t>
+                                            </t>
                                         </div>
                                     </t>
-                                    <div class="form-group form-field  form-field-date" data-model-field="true"
-                                         data-optional="true">
-                                        <label class="control-label" for="date_deadline">
-                                            <span>Deadline</span>
-                                        </label>
-                                        <input class="form-control o_website_form_input o_website_form_date" type="text"
-                                               name="date_deadline"/>
-                                    </div>
-                                    <div class="form-group form-field  form-field-text" data-model-field="false"
-                                         data-optional="true">
-                                        <label class="control-label" for="Omschrijving">
-                                            <span>
-                                                Omschrijving
-                                            </span>
-                                        </label>
-                                        <textarea class="form-control o_website_form_input" type="text"
-                                                  name="Omschrijving"/>
-                                        <p class="help-block">
-                                            Geef een gedetailleerde omschrijving van de opdracht.
-                                        </p>
-                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
                                         <button type="button" id="custom_form_button"
                                                 class="btn btn-primary o_website_form_send o_default_snippet_text">
-                                            Verzenden
+                                            Submit
                                         </button>
                                         <span id="o_website_form_result"/>
                                     </div>
