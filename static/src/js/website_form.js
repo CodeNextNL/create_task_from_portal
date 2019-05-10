@@ -1,4 +1,4 @@
- odoo.define('create_task_from_portal.website_form', function (require) {
+odoo.define('create_task_from_portal.website_form', function (require) {
     "use strict";
 
     require('web.dom_ready');
