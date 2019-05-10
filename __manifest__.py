@@ -8,10 +8,12 @@
     'website': 'https://www.codenext.nl',
     'category': 'Hidden',
     'depends': [
-        'portal'
+        'portal',
+        'website_form_builder'
     ],
     'data': [
         'views/templates.xml',
     ],
     'installable': True,
+    'post_init_hook': 'post_init_hook',
 }

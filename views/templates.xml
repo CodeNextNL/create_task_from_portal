@@ -3,7 +3,7 @@
 <odoo>
     <template id="assets_frontend" name="create_task_from_portal assets" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
-            <link rel="stylesheet" href="/create_task_from_portal/static/src/css/you_module_name.css"/>
+            <link rel="stylesheet" href="/create_task_from_portal/static/src/css/create_task_from_portal.css"/>
             <script type="text/javascript" src="/create_task_from_portal/static/src/js/website_form.js"></script>
         </xpath>
     </template>
