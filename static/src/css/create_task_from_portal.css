@@ -1,7 +1,7 @@
-.text-danger {
+form[data-model_name="project.task"] .text-danger {
     color: #ff0039 !important;
 }
 
-.text-success {
+form[data-model_name="project.task"] .text-success {
     color: #ff7518 !important;
 }
